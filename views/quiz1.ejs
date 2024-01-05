@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="quizForm">
+        <h2>Quiz</h2>
+        
+        <label for="q1">Question 1: What is 2 + 2?</label>
+        <input type="number" id="q1" name="q1" required>
+
+        <label for="q2">Question 2: What is the capital of France?</label>
+        <input type="text" id="q2" name="q2" required>
+
+        <label for="q3">Question 3: What is the powerhouse of the cell?</label>
+        <input type="text" id="q3" name="q3" required>
+
+        <button type="button" onclick="calculateResult()">Submit</button>
+        <div style="display: flex;">
+            <div style="margin: 2% 2% 2% 2%;">
+                <button type="button"><a class="btn btn-dark btn-lg" href="/goback" >GO Back</a></button>
+            </div>
+            <div style="margin: 2% 2% 2% 2%;">
+                <button type="button"><a class="btn btn-dark btn-lg" href="/reset" >RETEST</a></button>
+            </div>
+            </div>
+    </form>
+
+    <div id="result">
+        <h2>Results</h2>
+        <p id="score"></p>
+    </div>
+    
+
+    <script>
+        function calculateResult() {
+            var score = 0;
+
+            // Get user answers
+            var q1 = parseInt(document.getElementById("q1").value);
+            var q2 = document.getElementById("q2").value.toLowerCase();
+            var q3 = document.getElementById("q3").value.toLowerCase();
+
+            // Check answers
+            if (q1 === 4) {
+                score++;
+            }
+
+            if (q2 === "paris") {
+                score++;
+            }
+
+            if (q3 === "mitochondria") {
+                score++;
+            }
+
+            // Display result
+            document.getElementById("score").innerText = "Your score: " + score + "/3";
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
